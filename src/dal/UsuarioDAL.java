@@ -22,25 +22,27 @@ public class UsuarioDAL {
     public boolean validarUsuario(String usuario, String pass) throws SQLException
     {
         boolean resultado = false;
-        Connection conexion = Conexion.getConexion();
+        Conexion conexion = Conexion.getInstance();
+        Connection conn = conexion.getConnection();
         String query = "SELECT * FROM funcionario WHERE funcionarioid = "+usuario+" AND contraseña = "+pass+"";
         System.out.println(query);
-        PreparedStatement consulta = conexion.prepareStatement(query);
+        
+        PreparedStatement consulta = conn.prepareStatement(query);
         ResultSet rs = consulta.executeQuery();
    
         while(rs.next())
         {
             System.out.println("Fila: "+rs.getRow());
-            resultado = (rs.getRow()>1)?false:true;
-                       
+            resultado = (rs.getRow()>1)?false:true;      
         }
-        
+       
         return resultado;
 
     }
-    
+    /*
     private ResultSet getUsuario() throws SQLException
     {
+        /*
         Connection conexion = Conexion.getConexion();
         String query = "SELECT * FROM funcionario ORDER BY funcionarioid ASC";
         PreparedStatement consulta = conexion.prepareStatement(query);
@@ -50,7 +52,7 @@ public class UsuarioDAL {
         return rs;
     }
     
-    
+    */
     
 
     
