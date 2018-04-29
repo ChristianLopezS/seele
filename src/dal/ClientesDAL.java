@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dal;
-
+ 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,8 +40,10 @@ public class ClientesDAL {
         }
     }
     
-    public boolean nuevaEmpresa()
+ 
+    public boolean nuevaEmpresa(String nombEmp,String dir,String mail,int rutEmp,int pass,int nHuesp,int telefono,int empClntID,int hostalID,int servComID,int huespID)
     {
+        
         return true;
     }
     
