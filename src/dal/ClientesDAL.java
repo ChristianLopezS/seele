@@ -25,12 +25,15 @@ public class ClientesDAL {
         try{
             Conexion conexion = Conexion.getInstance();
             Connection conn = conexion.getConnection();
-            String query = "SELECT * FROM categoria ORDER BY id";
+            String query = "SELECT * FROM empresacliente";
             PreparedStatement consulta = conn.prepareStatement(query);
             
             ResultSet resultado = consulta.executeQuery();
             ClienteBLL cliente = new ClienteBLL();
             while (resultado.next()) {
+               cliente.setRutEmpresa(resultado.getInt("rutempresa"));
+               cliente.setNombreEmpresa(resultado.getString("nombreempresa"));
+                System.out.println(resultado.getString("nombreempresa"));
                
                 /*
                 empleado.setCodigo(resultado.getInt("codigo"));

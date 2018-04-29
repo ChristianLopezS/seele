@@ -5,6 +5,8 @@
  */
 package gui.clientes;
 
+import bll.ClienteBLL;
+
 /**
  *
  * @author christianlopez
@@ -16,6 +18,8 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        ClienteBLL cliente = new ClienteBLL();
+        cliente.getClientes();
     }
 
     /**
