@@ -11,4 +11,7 @@ package bll;
  */
 public class ClienteBLL {
     
+    private String nombre;
+    
+    
 }
