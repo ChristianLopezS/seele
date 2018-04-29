@@ -5,6 +5,8 @@
  */
 package bll;
 import dal.ClientesDAL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -75,12 +77,11 @@ public class ClienteBLL {
     };
     
     
-    public ArrayList<ClienteBLL> getClientes()
+    public ResultSet getClientes() throws SQLException
     {
-        ClientesDAL clientesDAL = new ClientesDAL();
-        ArrayList<ClienteBLL> clientes = clientesDAL.getAll();
+        ResultSet clientesDAL = new ClientesDAL().getAll();
         
-        return clientes;
+        return clientesDAL;
     }
 
 }

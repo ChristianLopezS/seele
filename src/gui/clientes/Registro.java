@@ -6,6 +6,13 @@
 package gui.clientes;
 
 import bll.ClienteBLL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -16,10 +23,31 @@ public class Registro extends javax.swing.JFrame {
     /**
      * Creates new form Registro
      */
-    public Registro() {
+    public Registro() throws SQLException {
         initComponents();
         ClienteBLL cliente = new ClienteBLL();
-        cliente.getClientes();
+        ResultSet clientes = cliente.getClientes();
+        DefaultTableModel tm = new DefaultTableModel();
+        tm.addColumn("Nombre");
+        tm.addColumn("Rut / Usuario");
+        tbClientes.setModel(tm);
+        
+        String[] datos = new String[2];
+        
+        while(clientes.next())
+        {
+            datos[0] = clientes.getString("nombreempresa");
+            datos[1] = clientes.getString("rutempresa");
+            tm.addRow(datos);
+        }
+        
+        tbClientes.setModel(tm);
+        
+        
+     
+        
+        
+        
     }
 
     /**
@@ -31,17 +59,39 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbClientes = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tbClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Empresa", "Usuario"
+            }
+        ));
+        jScrollPane1.setViewportView(tbClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,11 +127,17 @@ public class Registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+                try {
+                    new Registro().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbClientes;
     // End of variables declaration//GEN-END:variables
 }
