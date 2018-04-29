@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package bll;
+import dal.ClientesDAL;
 
 /**
  *
@@ -109,25 +110,16 @@ public class ClienteBLL {
     
         
     public boolean crearEmp(String nombEmp,String dir,String mail,int rutEmp,int pass,int nHuesp,int telefono,int empClntID,int hostalID,int servComID,int huespID)
-    {
-        setNombEmp(nombEmp);
-        setDir(dir);
-        setMail(mail);
-        setRutEmp(rutEmp);
-        setPass(pass);
-        setnHuesp(nHuesp);
-        setTelefono(telefono);
-        setEmpClntID(empClntID);
-        setHostalID(hostalID);
-        setServComID(servComID);
-        setHuespID(huespID);
+    {  
         
-        dal.ClientesDAL cdal = new dal.ClientesDAL();
-        
+        ClientesDAL cdal = new ClientesDAL();
        
-        
-        
-        
-        return false;
+        cdal.nuevaEmpresa(nombEmp, dir, mail, rutEmp, pass, nHuesp, telefono, empClntID, hostalID, servComID, huespID);
+       if()
+       {
+           return true;
+       }
+       
+              return false;
     };
 }
