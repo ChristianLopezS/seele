@@ -63,4 +63,18 @@ public class ClienteBLL {
     }
     
     
+    public boolean crearEmp(String nombEmp,String dir,String mail,int rutEmp,int pass,int nHuesp,int telefono,int empClntID,int hostalID,int servComID,int huespID)
+    {  
+        
+        ClientesDAL cdal = new ClientesDAL();
+       
+        cdal.nuevaEmpresa(nombEmp, dir, mail, rutEmp, pass, nHuesp, telefono, empClntID, hostalID, servComID, huespID);
+       if()
+       {
+           return true;
+       }
+       
+              return false;
+    };
+>>>>>>> 564201c2db932f7281938817242ae94242827f6f
 }
