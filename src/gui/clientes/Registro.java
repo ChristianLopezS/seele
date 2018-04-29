@@ -25,8 +25,7 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() throws SQLException {
         initComponents();
-        ClienteBLL cliente = new ClienteBLL();
-        ResultSet clientes = cliente.getClientes();
+        ResultSet clientes = new ClienteBLL().getClientes();
         DefaultTableModel tm = new DefaultTableModel();
         tm.addColumn("Nombre");
         tm.addColumn("Rut / Usuario");
