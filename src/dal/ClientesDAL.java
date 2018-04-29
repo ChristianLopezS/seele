@@ -16,12 +16,13 @@ import java.sql.SQLException;
  */
 public class ClientesDAL {
     
-    public void cargarCategorias(){
+    public void getAll(){
         
         try{
-            Connection conexion = Conexion.getConexion();
+            Conexion conexion = Conexion.getInstance();
+            Connection conn = conexion.getConnection();
             String query = "SELECT * FROM categoria ORDER BY id";
-            PreparedStatement consulta = conexion.prepareStatement(query);
+            PreparedStatement consulta = conn.prepareStatement(query);
             
             ResultSet rs = consulta.executeQuery();
             if(rs.getFetchSize() > 0){
@@ -29,8 +30,7 @@ public class ClientesDAL {
                    
                 }
             }
-            consulta.close();
-            conexion.close();
+            
         }catch(SQLException s){
             System.out.println("Error "+s.getMessage());
         
