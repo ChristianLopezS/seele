@@ -7,6 +7,8 @@ package dal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -22,12 +24,9 @@ public class ClientesDAL {
             PreparedStatement consulta = conexion.prepareStatement(query);
             
             ResultSet rs = consulta.executeQuery();
-            this.formulario.cboCategoriaListado.addItem("Todas");
             if(rs.getFetchSize() > 0){
                 while(rs.next()){
-                    this.formulario.cboCategoria.addItem(rs.getString("descripcion"));
-                    this.formulario.cboCategoria1.addItem(rs.getString("descripcion"));
-                    this.formulario.cboCategoriaListado.addItem(rs.getString("descripcion"));
+                   
                 }
             }
             consulta.close();
