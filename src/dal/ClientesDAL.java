@@ -40,4 +40,9 @@ public class ClientesDAL {
         }
     }
     
+    public boolean nuevaEmpresa()
+    {
+        return true;
+    }
+    
 }
